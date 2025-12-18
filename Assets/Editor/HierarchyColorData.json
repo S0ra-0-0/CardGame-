@@ -1,0 +1,1369 @@
+{
+    "colorEntries": [
+        {
+            "path": "UI",
+            "color": {
+                "r": 0.4892957806587219,
+                "g": 0.21867214143276215,
+                "b": 0.5094339847564697,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 5.079999923706055,
+            "headerMode": false,
+            "headerLabel": "kutje",
+            "useConditions": true,
+            "tagEquals": "Untagged",
+            "layerEquals": 5,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Managers",
+            "color": {
+                "r": 0.4716981053352356,
+                "g": 0.1447037309408188,
+                "b": 0.1223745197057724,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Camera Objects",
+            "color": {
+                "r": 0.38959595561027529,
+                "g": 0.801886796951294,
+                "b": 0.7776889204978943,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Enviroment",
+            "color": {
+                "r": 0.24003201723098756,
+                "g": 0.5471698045730591,
+                "b": 0.24201926589012147,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Enviroment/Holes",
+            "color": {
+                "r": 0.3320142328739166,
+                "g": 0.7619999647140503,
+                "b": 0.3374570608139038,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas",
+            "color": {
+                "r": 0.4892957806587219,
+                "g": 0.21867214143276215,
+                "b": 0.5094339847564697,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 5.079999923706055,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "GameManager",
+            "color": {
+                "r": 0.2463955283164978,
+                "g": 0.39253944158554079,
+                "b": 0.46226418018341067,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/player",
+            "color": {
+                "r": 0.16109800338745118,
+                "g": 1.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/Panel",
+            "color": {
+                "r": 0.16109800338745118,
+                "g": 1.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/playerhp",
+            "color": {
+                "r": 0.16109800338745118,
+                "g": 1.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/player mana",
+            "color": {
+                "r": 0.16109800338745118,
+                "g": 1.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/CardLocations",
+            "color": {
+                "r": 0.16109800338745118,
+                "g": 1.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "includeChildren": true,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/Panel2",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/Image",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/enemy hp",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/enemy mana",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/EnemyCardlocaiotns",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": true,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/enemy",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": false,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "Canvas/enemy Panel",
+            "color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.1835308074951172,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": true,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 14,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 0.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "TEStcanvs",
+            "color": {
+                "r": 0.4892957806587219,
+                "g": 0.21867214143276215,
+                "b": 0.5094339847564697,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": true,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 5.079999923706055,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        },
+        {
+            "path": "SceneLoader",
+            "color": {
+                "r": 0.2463955283164978,
+                "g": 0.39253944158554079,
+                "b": 0.46226418018341067,
+                "a": 1.0
+            },
+            "includeChildren": false,
+            "isExpanded": true,
+            "leftOffset": 0.0,
+            "rightOffset": 0.0,
+            "backgroundAlpha": 1.0,
+            "fontStyle": 1,
+            "useFontSize": true,
+            "fontSize": 15,
+            "useTextColor": true,
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderMode": 0,
+            "borderColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "borderThickness": 2.0,
+            "cornerRadius": 12.0,
+            "badgeEnabled": false,
+            "badgeColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "badgeSize": 6.0,
+            "headerMode": false,
+            "headerLabel": "",
+            "useConditions": false,
+            "tagEquals": "",
+            "layerEquals": -1,
+            "componentTypeContains": "",
+            "nameRegex": ""
+        }
+    ],
+    "defaults": {
+        "path": "",
+        "color": {
+            "r": 0.20000000298023225,
+            "g": 0.6000000238418579,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "includeChildren": false,
+        "isExpanded": true,
+        "leftOffset": 0.0,
+        "rightOffset": 0.0,
+        "backgroundAlpha": 0.25,
+        "fontStyle": 0,
+        "useFontSize": false,
+        "fontSize": 0,
+        "useTextColor": false,
+        "textColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "borderMode": 1,
+        "borderColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "borderThickness": 2.0,
+        "cornerRadius": 0.0,
+        "badgeEnabled": false,
+        "badgeColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+        },
+        "badgeSize": 6.0,
+        "headerMode": false,
+        "headerLabel": "",
+        "useConditions": false,
+        "tagEquals": "",
+        "layerEquals": -1,
+        "componentTypeContains": "",
+        "nameRegex": ""
+    },
+    "presets": [
+        {
+            "name": "Managers",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 0.2463955283164978,
+                    "g": 0.39253944158554079,
+                    "b": 0.46226418018341067,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 15,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 12.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 6.0,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        },
+        {
+            "name": "UI",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 0.4892957806587219,
+                    "g": 0.21867214143276215,
+                    "b": 0.5094339847564697,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 15,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 12.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 5.079999923706055,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        },
+        {
+            "name": "Enviroment",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 0.24003201723098756,
+                    "g": 0.5471698045730591,
+                    "b": 0.24201926589012147,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 15,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 12.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 6.0,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        },
+        {
+            "name": "Camera",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 0.38959595561027529,
+                    "g": 0.801886796951294,
+                    "b": 0.7776889204978943,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 15,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 12.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 6.0,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        },
+        {
+            "name": "Player",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 0.16109800338745118,
+                    "g": 1.0,
+                    "b": 0.0,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 14,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 0.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 6.0,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        },
+        {
+            "name": "Enemy",
+            "style": {
+                "path": "",
+                "color": {
+                    "r": 1.0,
+                    "g": 0.0,
+                    "b": 0.1835308074951172,
+                    "a": 1.0
+                },
+                "includeChildren": false,
+                "isExpanded": true,
+                "leftOffset": 0.0,
+                "rightOffset": 0.0,
+                "backgroundAlpha": 1.0,
+                "fontStyle": 1,
+                "useFontSize": true,
+                "fontSize": 14,
+                "useTextColor": true,
+                "textColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderMode": 0,
+                "borderColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "borderThickness": 2.0,
+                "cornerRadius": 0.0,
+                "badgeEnabled": false,
+                "badgeColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "badgeSize": 6.0,
+                "headerMode": false,
+                "headerLabel": "",
+                "useConditions": false,
+                "tagEquals": "",
+                "layerEquals": -1,
+                "componentTypeContains": "",
+                "nameRegex": ""
+            }
+        }
+    ],
+    "rules": []
+}

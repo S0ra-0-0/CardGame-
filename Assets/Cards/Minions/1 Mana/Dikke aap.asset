@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
+  m_Name: Dikke aap
+  m_EditorClassIdentifier: 
+  CardName: Dikke aap
+  ManaCost: 1
+  CardImage: {fileID: 21300000, guid: ed18132d206c14e4a9e0dc73db8e7432, type: 3}
+  Description: Eet bananen
+  Effects:
+  - {fileID: 11400000, guid: eefb2fe6615f2f849859092da5c96f72, type: 2}
+  targetType: 0

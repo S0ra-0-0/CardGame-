@@ -79,7 +79,12 @@ public class GameManager : MonoBehaviour
         if (minion.hasAttackedThisTurn)
         {
             Debug.LogWarning("This minion has already attacked this turn!");
-            //Visual feedback can be added here to represent tiredness or something
+            return;
+        }
+        
+        if (minion.justSummoned && !minion.HasRush)
+        {
+            Debug.LogWarning("This minion has summoning sickness and cannot attack yet!");
             return;
         }
 
@@ -121,6 +126,12 @@ public class GameManager : MonoBehaviour
             DeselectMinion();
             return;
         }
+        
+        if (!CanAttackTarget(enemyMinion))
+        {
+            Debug.LogWarning("Must attack Taunt minions first!");
+            return;
+        }
 
         Debug.Log($"{selectedMinion.name} attacks {enemyMinion.name}!");
 
@@ -151,7 +162,42 @@ public class GameManager : MonoBehaviour
         {
             Minion minion = minionObj.GetComponent<Minion>();
             minion.hasAttackedThisTurn = false;
+            minion.justSummoned = false;
         }
+    }
+    
+    private bool CanAttackTarget(Minion target)
+    {
+        bool hasTauntMinions = false;
+        foreach (GameObject enemyMinionObj in EnemyMinions)
+        {
+            Minion enemyMinion = enemyMinionObj.GetComponent<Minion>();
+            if (enemyMinion != null && enemyMinion.HasTaunt)
+            {
+                hasTauntMinions = true;
+                break;
+            }
+        }
+        
+        if (hasTauntMinions && !target.HasTaunt)
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private bool CanAttackHero()
+    {
+        foreach (GameObject enemyMinionObj in EnemyMinions)
+        {
+            Minion enemyMinion = enemyMinionObj.GetComponent<Minion>();
+            if (enemyMinion != null && enemyMinion.HasTaunt)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     public void AttackEnemyHero(AiPlayer enemyHero)
     {
@@ -170,6 +216,18 @@ public class GameManager : MonoBehaviour
         if (selectedMinion.isEnemy)
         {
             Debug.LogWarning("Cannot attack with enemy minion!");
+            return;
+        }
+        
+        if (selectedMinion.HasRush && selectedMinion.justSummoned)
+        {
+            Debug.LogWarning("Rush minions cannot attack the enemy hero on the turn they are summoned!");
+            return;
+        }
+        
+        if (!CanAttackHero())
+        {
+            Debug.LogWarning("Must attack Taunt minions first!");
             return;
         }
 

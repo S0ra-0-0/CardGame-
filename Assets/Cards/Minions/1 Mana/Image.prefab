@@ -518,10 +518,15 @@ MonoBehaviour:
   spawnSpot: {fileID: 0}
   isEnemy: 0
   hasAttackedThisTurn: 0
+  HasTaunt: 0
+  HasRush: 0
+  justSummoned: 1
   minionImage: {fileID: 3718076025333948128}
   minonButton: {fileID: 6654675248087545525}
   attackText: {fileID: 4793629472634697274}
   healthText: {fileID: 387482900524460076}
+  keyWords:
+  - {fileID: 11400000, guid: 5ae93663d673f524abbd1d158a53485f, type: 2}
   attack: 3
   health: 7
 --- !u!114 &6654675248087545525

@@ -6,7 +6,10 @@ public class Minion : MonoBehaviour
 {
     public Transform spawnSpot;
     public bool isEnemy = false;
-    public bool hasAttackedThisTurn = false;
+    public bool hasAttackedThisTurn = true;
+    public bool HasTaunt = false;
+    public bool HasRush = false;
+    public bool justSummoned = true;
     public Image minionImage;
 
     public Button minonButton;
@@ -14,6 +17,7 @@ public class Minion : MonoBehaviour
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI healthText;
 
+    [SerializeField] private KeyWords[] keyWords;
     [Header("Stats")]
     [SerializeField] private int attack = 3;
     [SerializeField] private int health = 7;
@@ -22,6 +26,21 @@ public class Minion : MonoBehaviour
     {
         attackText.text = attack.ToString();
         healthText.text = health.ToString();
+
+        foreach (KeyWords keyWord in keyWords)
+        {
+            keyWord.KeyWordAction();
+
+            if (keyWord is TauntKeyWord)
+            {
+                HasTaunt = true;
+            }
+            else if (keyWord is RushKeyWord)
+            {
+                HasRush = true;
+                justSummoned = false;
+            }
+        }
     }
     public int Attack
     {
@@ -59,8 +78,6 @@ public class Minion : MonoBehaviour
         }
 
     }
-
-
 
     private void OnDestroy()
     {

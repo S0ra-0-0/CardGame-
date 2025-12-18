@@ -6,7 +6,10 @@ public class Minion : MonoBehaviour
 {
     public Transform spawnSpot;
     public bool isEnemy = false;
+    public bool hasAttackedThisTurn = false;
     public Image minionImage;
+
+    public Button minonButton;
 
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI healthText;
@@ -32,6 +35,8 @@ public class Minion : MonoBehaviour
         set
         {
             health = value;
+            attackText.text = attack.ToString();
+            healthText.text = health.ToString();
             if (health <= 0)
             {
                 Destroy(gameObject);
@@ -52,10 +57,7 @@ public class Minion : MonoBehaviour
             attackText.text = attack.ToString();
             healthText.text = health.ToString();
         }
-        else
-        {
-            GameManager.Instance.SelectMinion(this);
-        }
+
     }
 
 

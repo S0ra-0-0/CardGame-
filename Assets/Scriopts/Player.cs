@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
         {
             PlayerHand.AddCard(drawnCard);
         }
+
+        GameManager.Instance.ResetMinionsForNewTurn();
     }
 
     public void PlayCard(CardScriptable card, GameObject target)

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> EnemyMinions = new List<GameObject>();
     public Board board;
 
-    private Minion selectedMinion = null;
+    [SerializeField] private Minion selectedMinion = null;
 
     public bool IsPlayerTurn = true;
 
@@ -76,6 +76,13 @@ public class GameManager : MonoBehaviour
                 m.minionImage.material = newMaterial;
             }
         }
+        if (minion.hasAttackedThisTurn)
+        {
+            Debug.LogWarning("This minion has already attacked this turn!");
+            //Visual feedback can be added here to represent tiredness or something
+            return;
+        }
+
         Material selectedMaterial = new Material(minion.minionImage.material);
         selectedMaterial.color = Color.cyan;
         minion.minionImage.material = selectedMaterial;
@@ -108,6 +115,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (selectedMinion.hasAttackedThisTurn)
+        {
+            Debug.LogWarning("Selected minion has already attacked this turn!");
+            DeselectMinion();
+            return;
+        }
+
         Debug.Log($"{selectedMinion.name} attacks {enemyMinion.name}!");
 
         int attackerAttack = selectedMinion.Attack;
@@ -115,6 +129,7 @@ public class GameManager : MonoBehaviour
 
         enemyMinion.Health -= attackerAttack;
         selectedMinion.Health -= defenderAttack;
+        selectedMinion.hasAttackedThisTurn = true;
 
         DeselectMinion();
     }
@@ -128,5 +143,43 @@ public class GameManager : MonoBehaviour
             selectedMinion.minionImage.material = newMaterial;
             selectedMinion = null;
         }
+    }
+
+    public void ResetMinionsForNewTurn()
+    {
+        foreach (GameObject minionObj in Minions)
+        {
+            Minion minion = minionObj.GetComponent<Minion>();
+            minion.hasAttackedThisTurn = false;
+        }
+    }
+    public void AttackEnemyHero(AiPlayer enemyHero)
+    {
+        if (selectedMinion == null)
+        {
+            Debug.LogWarning("No minion selected to attack with!");
+            return;
+        }
+
+        if (!IsPlayerTurn)
+        {
+            Debug.LogWarning("Cannot attack during enemy turn!");
+            return;
+        }
+
+        if (selectedMinion.isEnemy)
+        {
+            Debug.LogWarning("Cannot attack with enemy minion!");
+            return;
+        }
+
+        Debug.Log($"{selectedMinion.name} attacks {enemyHero.name}!");
+
+        int attackerAttack = selectedMinion.Attack;
+        enemyHero.EnemyHealth.TakeDamage(attackerAttack);
+        selectedMinion.hasAttackedThisTurn = true;
+
+        DeselectMinion();
+        CheckForGameOver();
     }
 }

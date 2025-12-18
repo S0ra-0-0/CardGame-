@@ -10,6 +10,11 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TMP_Text cardNameText;
     [SerializeField] private TMP_Text cardDescriptionText;
 
+    [SerializeField] private TMP_Text manaCostText;
+    [SerializeField] private GameObject minionStatsPanel;
+    [SerializeField] private TMP_Text attackText;
+    [SerializeField] private TMP_Text healthText;
+
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -39,6 +44,32 @@ public class CardUI : MonoBehaviour
             if (cardDescriptionText != null)
             {
                 cardDescriptionText.text = Card.Description;
+            }
+            if (manaCostText != null)
+            {
+                manaCostText.text = Card.ManaCost.ToString();
+            }
+
+            foreach (CardEffect effect in Card.Effects)
+            {
+                if (effect.Type == CardEffect.EffectType.Summon)
+                {
+                    SummonEffect summonEffect = effect as SummonEffect;
+                    if (summonEffect != null && summonEffect.minionPrefab != null)
+                    {
+                        Minion minion = summonEffect.minionPrefab.GetComponent<Minion>();
+                        if (minion != null)
+                        {
+                            if (minionStatsPanel != null)
+                                minionStatsPanel.SetActive(true);
+                            if (attackText != null)
+                                attackText.text = minion.Attack.ToString();
+                            if (healthText != null)
+                                healthText.text = minion.Health.ToString();
+                        }
+                    }
+                    break;
+                }
             }
         }
     }

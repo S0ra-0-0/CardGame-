@@ -43,7 +43,7 @@ public class Hand : MonoBehaviour
             CardScriptable card = CardsInHand[i];
             GameObject cardUI = Instantiate(CardPrefab, handTransform);
 
-            float cardSpacing = 15f;
+            float cardSpacing = 60f;
             float startX = -(CardsInHand.Count - 1) * cardSpacing / 2f;
             cardUI.transform.localPosition = new Vector3(startX + i * cardSpacing, 0, 0);
 

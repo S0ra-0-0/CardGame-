@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "SummonEffect", menuName = "Card Game/Effects/Summon")]
 public class SummonEffect : CardEffect
@@ -11,15 +12,15 @@ public class SummonEffect : CardEffect
         Transform spawnSpot = null;
         bool isEnemySummon = false;
 
-        // Check if the target is an enemy (AI player)
         if (target.GetComponent<AiPlayer>() != null)
         {
             isEnemySummon = true;
             spawnSpot = board.GetAvailableEnemySpawnSpot();
+
+
         }
         else
         {
-            // Player summon
             spawnSpot = board.GetAvailableSpawnSpot();
         }
 
@@ -29,9 +30,9 @@ public class SummonEffect : CardEffect
             return;
         }
 
-        // Spawn the minion
         GameObject minionObj = Instantiate(minionPrefab, spawnSpot.position, Quaternion.identity, board.transform);
         Minion minion = minionObj.GetComponent<Minion>();
+
 
         if (minion == null)
         {
@@ -40,11 +41,22 @@ public class SummonEffect : CardEffect
             return;
         }
 
-        // Set minion properties
         minion.spawnSpot = spawnSpot;
         minion.isEnemy = isEnemySummon;
 
-        // Add to appropriate list in GameManager
+
+        if (isEnemySummon)
+        {
+            minionObj.GetComponent<Image>().color = Color.red;
+            minionObj.name = "Enemy Minion";
+            minion.minonButton.onClick.AddListener(minion.OnClick);
+        }
+        else
+        {
+            minionObj.name = "Player Minion";
+            minion.minonButton.onClick.AddListener(minion.OnSellect);
+        }
+
         if (isEnemySummon)
         {
             GameManager.Instance.EnemyMinions.Add(minionObj);

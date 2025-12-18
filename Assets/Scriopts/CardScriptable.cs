@@ -9,6 +9,8 @@ public class CardScriptable : ScriptableObject
     public Sprite CardImage;
     public string Description;
 
+    public enum CardType { Minion, Spell, Secret, Weapon }
+    public CardType cardType;
     public List<CardEffect> Effects = new List<CardEffect>();
 
     public enum TargetType { Self, Enemy, AllEnemies, AllAllies, RandomEnemy }

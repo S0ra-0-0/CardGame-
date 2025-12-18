@@ -56,4 +56,12 @@ public class AiPlayer : MonoBehaviour
         }
         GameManager.Instance.EndTurn();
     }
+
+    public void OnClick()
+    {
+        if (GameManager.Instance.IsPlayerTurn)
+        {
+            GameManager.Instance.AttackEnemyHero(this);
+        }
+    }
 }

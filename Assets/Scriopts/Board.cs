@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Board : MonoBehaviour
 {
@@ -78,7 +77,7 @@ public class Board : MonoBehaviour
                 break;
             }
         }
-        
+
         for (int i = 0; i < enemySpawnSpots.Length; i++)
         {
             if (enemySpawnSpots[i] == spot)

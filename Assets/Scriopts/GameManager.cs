@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -10,10 +9,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Minions = new List<GameObject>();
     public List<GameObject> EnemyMinions = new List<GameObject>();
     public Board board;
+    public bool IsPlayerTurn = true;
 
+    [ConditionalHide("IsPlayerTurn")]
     [SerializeField] private Minion selectedMinion = null;
 
-    public bool IsPlayerTurn = true;
+
 
     private void Awake()
     {
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("This minion has already attacked this turn!");
             return;
         }
-        
+
         if (minion.justSummoned && !minion.HasRush)
         {
             Debug.LogWarning("This minion has summoning sickness and cannot attack yet!");
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
             DeselectMinion();
             return;
         }
-        
+
         if (!CanAttackTarget(enemyMinion))
         {
             Debug.LogWarning("Must attack Taunt minions first!");
@@ -138,8 +139,36 @@ public class GameManager : MonoBehaviour
         int attackerAttack = selectedMinion.Attack;
         int defenderAttack = enemyMinion.Attack;
 
-        enemyMinion.Health -= attackerAttack;
-        selectedMinion.Health -= defenderAttack;
+        if (enemyMinion.hasDivineShield)
+        {
+            enemyMinion.hasDivineShield = false;
+            Debug.Log($"{enemyMinion.name} lost its Divine Shield!");
+        }
+        else
+        {
+            enemyMinion.Health -= attackerAttack;
+        }
+
+        if (enemyMinion.hasLifeDrain)
+        {
+            Enemies[0].GetComponent<AiPlayer>().EnemyHealth.Heal(defenderAttack);
+            Debug.Log($"{enemyMinion.name} drains {defenderAttack} health to the enemy!");
+        }
+        if (selectedMinion.hasDivineShield)
+        {
+            selectedMinion.hasDivineShield = false;
+            Debug.Log($"{selectedMinion.name} lost its Divine Shield!");
+        }
+        else
+        {
+            selectedMinion.Health -= defenderAttack;
+        }
+
+        if (selectedMinion.hasLifeDrain)
+        {
+            Player.PlayerHealth.Heal(attackerAttack);
+            Debug.Log($"{selectedMinion.name} drains {attackerAttack} health to the player!");
+        }
         selectedMinion.hasAttackedThisTurn = true;
 
         DeselectMinion();
@@ -163,9 +192,10 @@ public class GameManager : MonoBehaviour
             Minion minion = minionObj.GetComponent<Minion>();
             minion.hasAttackedThisTurn = false;
             minion.justSummoned = false;
+            minion.canAttackHero = true;
         }
     }
-    
+
     private bool CanAttackTarget(Minion target)
     {
         bool hasTauntMinions = false;
@@ -178,17 +208,18 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        
+
         if (hasTauntMinions && !target.HasTaunt)
         {
             return false;
         }
-        
+
         return true;
     }
-    
+
     private bool CanAttackHero()
     {
+        if (!selectedMinion.canAttackHero) { return false; }
         foreach (GameObject enemyMinionObj in EnemyMinions)
         {
             Minion enemyMinion = enemyMinionObj.GetComponent<Minion>();
@@ -218,16 +249,16 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Cannot attack with enemy minion!");
             return;
         }
-        
+
         if (selectedMinion.HasRush && selectedMinion.justSummoned)
         {
             Debug.LogWarning("Rush minions cannot attack the enemy hero on the turn they are summoned!");
             return;
         }
-        
+
         if (!CanAttackHero())
         {
-            Debug.LogWarning("Must attack Taunt minions first!");
+            Debug.LogWarning("Cannot attack the hero at this moment!");
             return;
         }
 

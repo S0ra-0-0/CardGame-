@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
+  m_Name: stagling
+  m_EditorClassIdentifier: 
+  CardName: Stagling
+  ManaCost: 2
+  CardImage: {fileID: 21300000, guid: fe963fd91577d7f47b5556d36ce3f009, type: 3}
+  Description: 
+  cardType: 0
+  Attack: 2
+  Health: 2
+  Durability: 0
+  WeaponAttack: 0
+  Effects:
+  - {fileID: 11400000, guid: 129cb983341d87646a61cc0aebb646f1, type: 2}
+  targetType: 0

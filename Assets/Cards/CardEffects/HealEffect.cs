@@ -10,5 +10,20 @@ public class HealEffect : CardEffect
             health.Heal(value);
             Debug.Log($"{target.name} healed for {value} health!");
         }
+        else if (target.TryGetComponent<Minion>(out Minion minion))
+        {
+            if (minion.Health + value > minion.maxHealth)
+            {
+                minion.Health = minion.maxHealth;
+            }
+            else
+            {
+                minion.Health += value;
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Target {target.name} does not have a Health or Minion component!");
+        }
     }
 }

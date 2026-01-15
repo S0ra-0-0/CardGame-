@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
+  m_Name: Shade
+  m_EditorClassIdentifier: 
+  CardName: Shade
+  ManaCost: 1
+  CardImage: {fileID: 21300000, guid: 48d5eaec31aca9e4a980aa96a80d9a47, type: 3}
+  Description: Shady
+  cardType: 0
+  Attack: 1
+  Health: 1
+  Durability: 0
+  WeaponAttack: 0
+  Effects: []
+  targetType: 0

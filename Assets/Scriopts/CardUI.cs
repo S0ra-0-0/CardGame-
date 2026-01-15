@@ -19,15 +19,14 @@ public class CardUI : MonoBehaviour
     {
         button = GetComponent<Button>();
 
-        cardNameText = GetComponentInChildren<TMP_Text>();
 
         if (button == null)
         {
             Debug.LogError("Button component not found on CardUI prefab!");
             return;
         }
-        button.onClick.AddListener(OnCardClicked);
     }
+
 
     public void UpdateCardDisplay()
     {
@@ -50,31 +49,32 @@ public class CardUI : MonoBehaviour
                 manaCostText.text = Card.ManaCost.ToString();
             }
 
-            foreach (CardEffect effect in Card.Effects)
+            if (Card.cardType == CardScriptable.CardType.Minion)
             {
-                if (effect.Type == CardEffect.EffectType.Summon)
-                {
-                    SummonEffect summonEffect = effect as SummonEffect;
-                    if (summonEffect != null && summonEffect.minionPrefab != null)
-                    {
-                        Minion minion = summonEffect.minionPrefab.GetComponent<Minion>();
-                        if (minion != null)
-                        {
-                            if (minionStatsPanel != null)
-                                minionStatsPanel.SetActive(true);
-                            if (attackText != null)
-                                attackText.text = minion.Attack.ToString();
-                            if (healthText != null)
-                                healthText.text = minion.Health.ToString();
-                        }
-                    }
-                    break;
-                }
+                if (minionStatsPanel != null)
+                    minionStatsPanel.SetActive(true);
+                if (attackText != null)
+                    attackText.text = Card.Attack.ToString();
+                if (healthText != null)
+                    healthText.text = Card.Health.ToString();
             }
+
+
         }
     }
+    public void zoomInOnHover()
+    {
+        transform.localScale = new Vector3(1.6f, 1.6f, 1);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 100f, transform.position.z);
+    }
 
-    private void OnCardClicked()
+    public void zoomOutOnExit()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 100f, transform.position.z);
+    }
+
+    public void OnCardClicked()
     {
         if (Card != null && GameManager.Instance != null && GameManager.Instance.Enemies.Count > 0)
         {

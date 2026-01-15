@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AiPlayer : MonoBehaviour
@@ -7,7 +8,7 @@ public class AiPlayer : MonoBehaviour
     public Mana EnemyMana;
     public Health EnemyHealth;
     public bool IsStunned = false;
-
+    [SerializeField] private float turnTime = 2f;
     private void Start()
     {
         EnemyHealth = GetComponent<Health>();
@@ -54,6 +55,12 @@ public class AiPlayer : MonoBehaviour
                 break;
             }
         }
+        StartCoroutine(endTurn());
+    }
+
+    public IEnumerator endTurn()
+    {
+        yield return new WaitForSeconds(turnTime);
         GameManager.Instance.EndTurn();
     }
 

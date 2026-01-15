@@ -21,14 +21,6 @@ public class Mana : MonoBehaviour
     public void StartTurn()
     {
         TurnCount++;
-        foreach (Image crystal in ManaCrystals)
-        {
-            crystal.enabled = false;
-        }
-        for (int i = 0; i < Mathf.Min(TurnCount, MaxMana); i++)
-        {
-            ManaCrystals[i].enabled = true;
-        }
         CurrentMana = Mathf.Min(TurnCount, MaxMana);
         ManaText.text = CurrentMana + "/" + MaxMana;
     }

@@ -11,6 +11,20 @@ public class CardScriptable : ScriptableObject
 
     public enum CardType { Minion, Spell, Secret, Weapon }
     public CardType cardType;
+
+    [ConditionalHide("cardType", (int)CardType.Minion)]
+    public int Attack;
+    [ConditionalHide("cardType", (int)CardType.Minion)]
+    public int Health;
+    [ConditionalHide("cardType", (int)CardType.Weapon)]
+    public int Durability;
+    [ConditionalHide("cardType", (int)CardType.Weapon)]
+    public int WeaponAttack;
+
+
+
+
+
     public List<CardEffect> Effects = new List<CardEffect>();
 
     public enum TargetType { Self, Enemy, AllEnemies, AllAllies, RandomEnemy }

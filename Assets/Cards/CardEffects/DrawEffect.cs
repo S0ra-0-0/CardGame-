@@ -5,8 +5,19 @@ public class DrawEffect : CardEffect
 {
     public override void ApplyEffect(GameObject target, int value)
     {
+        Deck deck = null;
+        if (GameManager.Instance.IsPlayerTurn)
+        {
+            target = GameManager.Instance.Player.gameObject;
+            deck = target.GetComponent<Player>()?.PlayerDeck;
+        }
+        else
+        {
+            target = GameManager.Instance.Enemies[0].gameObject;
+            deck = target.GetComponent<AiPlayer>()?.EnemyDeck;
+        }
+
         Hand hand = target.GetComponent<Hand>();
-        Deck deck = target.GetComponent<Player>()?.PlayerDeck;
         if (hand == null)
         {
             Debug.LogError("Target does not have a Hand component!");

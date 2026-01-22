@@ -21,6 +21,5 @@ MonoBehaviour:
   Health: 1
   Durability: 0
   WeaponAttack: 0
-  Effects:
-  - {fileID: 11400000, guid: d1f4a4aea1831ea4681daaea49b0408d, type: 2}
+  Effects: []
   targetType: 0

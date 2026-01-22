@@ -12,18 +12,10 @@ public class CardScriptable : ScriptableObject
     public enum CardType { Minion, Spell, Secret, Weapon }
     public CardType cardType;
 
-    [ConditionalHide("cardType", (int)CardType.Minion)]
     public int Attack;
-    [ConditionalHide("cardType", (int)CardType.Minion)]
     public int Health;
-    [ConditionalHide("cardType", (int)CardType.Weapon)]
     public int Durability;
-    [ConditionalHide("cardType", (int)CardType.Weapon)]
     public int WeaponAttack;
-
-
-
-
 
     public List<CardEffect> Effects = new List<CardEffect>();
 
@@ -45,7 +37,7 @@ public class CardScriptable : ScriptableObject
                     }
                     else
                     {
-                        // Enemy's turn, apply to the target (which should be the AI player)
+                        // Enemy's turn, apply to the target (which should be the AI player) 
                         effect.ApplyEffect(target, effect.Value);
                     }
                     break;

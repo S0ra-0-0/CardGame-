@@ -22,5 +22,5 @@ MonoBehaviour:
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: 754e824fdb2a0574a81558f31f6dda0b, type: 2}
+  - {fileID: 11400000, guid: d462fe11930103341b88a621d8549a62, type: 2}
   targetType: 0

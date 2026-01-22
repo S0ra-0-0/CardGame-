@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
+  m_Name: Obsidian Colossus
+  m_EditorClassIdentifier: 
+  CardName: Obsidian Colossus
+  ManaCost: 8
+  CardImage: {fileID: 21300000, guid: 0e8e07bf7d4f791489b63e8360c87fec, type: 3}
+  Description: 'Taunt, Frenzy: Gain +2/+2'
+  cardType: 0
+  Attack: 8
+  Health: 8
+  Durability: 0
+  WeaponAttack: 0
+  Effects:
+  - {fileID: 11400000, guid: b0f9f43c79dd8f84bbc11748e3d30f68, type: 2}
+  targetType: 0

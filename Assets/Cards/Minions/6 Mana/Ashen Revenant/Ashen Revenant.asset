@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
-  m_Name: VenomFang Viper
+  m_Name: Ashen Revenant
   m_EditorClassIdentifier: 
-  CardName: Venomfang Viper
-  ManaCost: 3
-  CardImage: {fileID: 21300000, guid: 1122abd3ea21a4943971c010adb39cda, type: 3}
-  Description: Poisonous
+  CardName: Ashen Revenant
+  ManaCost: 6
+  CardImage: {fileID: 21300000, guid: 745fb3b90d66b1c49b014d7e082951a6, type: 3}
+  Description: 'Deathrattle: Deal 2 damage to all minions'
   cardType: 0
-  Attack: 3
-  Health: 2
+  Attack: 5
+  Health: 5
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: 3aef0d7beedde4943911188ff0aed36b, type: 2}
+  - {fileID: 11400000, guid: 11c5ff9a151632042ab840cf5811d6e7, type: 2}
   targetType: 0

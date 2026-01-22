@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
+  m_Name: Moonlit Oracle
+  m_EditorClassIdentifier: 
+  CardName: Moonlit Oracle
+  ManaCost: 5
+  CardImage: {fileID: 21300000, guid: f0d57429c1fc0b44792f0f633dc128c3, type: 3}
+  Description: 'Battlecry: Draw 2 cards'
+  cardType: 0
+  Attack: 3
+  Health: 5
+  Durability: 0
+  WeaponAttack: 0
+  Effects:
+  - {fileID: 11400000, guid: cc914528b6819cc42a085d83b255bbb9, type: 2}
+  targetType: 0

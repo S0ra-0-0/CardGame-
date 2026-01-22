@@ -27,6 +27,11 @@ public class CardUI : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateCardDisplay();
+    }
+
 
     public void UpdateCardDisplay()
     {

@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
@@ -11,9 +13,28 @@ public class GameManager : MonoBehaviour
     public Board board;
     public bool IsPlayerTurn = true;
 
+
+    [SerializeField] private TextMeshProUGUI PlayerTurn;
+    [SerializeField] private TextMeshProUGUI EnemyTurn;
+
+
     [ConditionalHide("IsPlayerTurn")]
     [SerializeField] private Minion selectedMinion = null;
 
+    [Header("Log Messages")]
+    private const string NoMinionSelectedWarning = "No minion selected to attack with!";
+    private const string NotPlayerTurnWarning = "Cannot attack during enemy turn!";
+    private const string EnemyMinionWarning = "Cannot attack with enemy minion!";
+    private const string TargetMustBeEnemyWarning = "Target must be an enemy minion!";
+    private const string AlreadyAttackedWarning = "Selected minion has already attacked this turn!";
+    private const string StealthWarning = "Cannot attack a minion with Stealth!";
+    private const string TauntWarning = "Must attack Taunt minions first!";
+    private const string DivineShieldLostLog = "{0} lost its Divine Shield!";
+    private const string PoisonousDestroyLog = "{0} was destroyed by Poisonous!";
+    private const string LifeDrainLog = "{0} drains {1} health to the {2}!";
+
+    [SerializeField] private int RoundCount = 1;
+    [SerializeField] private int MaxRounds = 8;
 
 
     private void Awake()
@@ -31,20 +52,43 @@ public class GameManager : MonoBehaviour
         Player.StartTurn();
     }
 
-    public void EndTurn()
+    public void EndTurnPlayer()
     {
-        IsPlayerTurn = !IsPlayerTurn;
         if (IsPlayerTurn)
         {
-            Player.StartTurn();
-        }
-        else
-        {
+            IsPlayerTurn = false;
+            StartCoroutine(AiTurnText());
+            PlayerTurn.gameObject.SetActive(false);
             foreach (GameObject enemy in Enemies)
             {
                 enemy.GetComponent<AiPlayer>().StartTurn();
-
             }
+        }
+        CheckForGameOver();
+    }
+
+    public IEnumerator playerTurnText()
+    {
+        PlayerTurn.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        PlayerTurn.gameObject.SetActive(false);
+    }
+
+    public IEnumerator AiTurnText()
+    {
+        EnemyTurn.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        EnemyTurn.gameObject.SetActive(false);
+    }
+
+
+    public void EndTurnAi()
+    {
+        if (!IsPlayerTurn)
+        {
+            StartCoroutine(playerTurnText());
+            IsPlayerTurn = true;
+            Player.StartTurn();
         }
         CheckForGameOver();
     }
@@ -77,15 +121,21 @@ public class GameManager : MonoBehaviour
                 m.minionImage.material = newMaterial;
             }
         }
-        if (minion.hasAttackedThisTurn)
+        if (minion.HasStatus(Minion.MinionStatus.HasAttackedThisTurn))
         {
             Debug.LogWarning("This minion has already attacked this turn!");
             return;
         }
 
-        if (minion.justSummoned && !minion.HasRush)
+        if (minion.HasStatus(Minion.MinionStatus.JustSummoned) && !minion.HasStatus(Minion.MinionStatus.HasRush))
         {
             Debug.LogWarning("This minion has summoning sickness and cannot attack yet!");
+            return;
+        }
+
+        if (minion.HasStatus(Minion.MinionStatus.IsStunned))
+        {
+            Debug.LogWarning("This minion is stunned and cannot attack this turn!");
             return;
         }
 
@@ -97,88 +147,157 @@ public class GameManager : MonoBehaviour
 
     public void AttackEnemyMinion(Minion enemyMinion)
     {
-        if (selectedMinion == null)
+        if (!CanAttackEnemyMinion(enemyMinion))
         {
-            Debug.LogWarning("No minion selected to attack with!");
-            return;
-        }
-
-        if (!IsPlayerTurn)
-        {
-            Debug.LogWarning("Cannot attack during enemy turn!");
-            return;
-        }
-
-        if (selectedMinion.isEnemy)
-        {
-            Debug.LogWarning("Cannot attack with enemy minion!");
-            return;
-        }
-
-        if (!enemyMinion.isEnemy)
-        {
-            Debug.LogWarning("Target must be an enemy minion!");
-            return;
-        }
-
-        if (selectedMinion.hasAttackedThisTurn)
-        {
-            Debug.LogWarning("Selected minion has already attacked this turn!");
-            DeselectMinion();
-            return;
-        }
-
-        if (!CanAttackTarget(enemyMinion))
-        {
-            Debug.LogWarning("Must attack Taunt minions first!");
             return;
         }
 
         Debug.Log($"{selectedMinion.name} attacks {enemyMinion.name}!");
+        ResolveCombat(enemyMinion);
+    }
 
+    private bool CanAttackEnemyMinion(Minion enemyMinion)
+    {
+        if (selectedMinion == null)
+        {
+            Debug.LogWarning(NoMinionSelectedWarning);
+            return false;
+        }
+
+        if (!IsPlayerTurn)
+        {
+            Debug.LogWarning(NotPlayerTurnWarning);
+            return false;
+        }
+
+        if (selectedMinion.isEnemy)
+        {
+            Debug.LogWarning(EnemyMinionWarning);
+            return false;
+        }
+
+        if (!enemyMinion.isEnemy)
+        {
+            Debug.LogWarning(TargetMustBeEnemyWarning);
+            return false;
+        }
+
+        if (selectedMinion.HasStatus(Minion.MinionStatus.HasAttackedThisTurn))
+        {
+            Debug.LogWarning(AlreadyAttackedWarning);
+            DeselectMinion();
+            return false;
+        }
+
+        if (enemyMinion.HasStatus(Minion.MinionStatus.HasStealth))
+        {
+            Debug.LogWarning(StealthWarning);
+            return false;
+        }
+
+        if (!CanAttackTarget(enemyMinion))
+        {
+            Debug.LogWarning(TauntWarning);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void ResolveCombat(Minion enemyMinion)
+    {
         int attackerAttack = selectedMinion.Attack;
         int defenderAttack = enemyMinion.Attack;
 
-        if (enemyMinion.hasDivineShield)
+        ResolveAttackerDamage(enemyMinion, attackerAttack);
+        ResolveDefenderDamage(enemyMinion, defenderAttack);
+
+        selectedMinion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, true);
+        DeselectMinion();
+    }
+
+    private void ResolveAttackerDamage(Minion enemyMinion, int attackerAttack)
+    {
+        if (enemyMinion.HasStatus(Minion.MinionStatus.HasDivineShield))
         {
-            enemyMinion.hasDivineShield = false;
-            Debug.Log($"{enemyMinion.name} lost its Divine Shield!");
+            enemyMinion.SetStatus(Minion.MinionStatus.HasDivineShield, false);
+            Debug.Log(string.Format(DivineShieldLostLog, enemyMinion.name));
+        }
+        else if (selectedMinion.HasStatus(Minion.MinionStatus.HasPoisonous))
+        {
+            enemyMinion.Health = 0;
+            CheckOverkillEffect(attackerAttack, enemyMinion.Health);
+            Debug.Log(string.Format(PoisonousDestroyLog, enemyMinion.name));
         }
         else
         {
+            CheckOverkillEffect(attackerAttack, enemyMinion.Health);
             enemyMinion.Health -= attackerAttack;
         }
 
-        if (enemyMinion.hasLifeDrain)
+        if (selectedMinion.HasStatus(Minion.MinionStatus.HasLifeDrain))
         {
-            Enemies[0].GetComponent<AiPlayer>().EnemyHealth.Heal(defenderAttack);
-            Debug.Log($"{enemyMinion.name} drains {defenderAttack} health to the enemy!");
+            Player.PlayerHealth.Heal(attackerAttack);
+            Debug.Log(string.Format(LifeDrainLog, selectedMinion.name, attackerAttack, "player"));
         }
-        if (selectedMinion.hasDivineShield)
+
+    }
+
+    private void ResolveDefenderDamage(Minion enemyMinion, int defenderAttack)
+    {
+        if (selectedMinion.HasStatus(Minion.MinionStatus.HasDivineShield))
         {
-            selectedMinion.hasDivineShield = false;
-            Debug.Log($"{selectedMinion.name} lost its Divine Shield!");
+            selectedMinion.SetStatus(Minion.MinionStatus.HasDivineShield, false);
+            Debug.Log(string.Format(DivineShieldLostLog, selectedMinion.name));
+        }
+        else if (enemyMinion.HasStatus(Minion.MinionStatus.HasPoisonous))
+        {
+            selectedMinion.Health = 0;
+            Debug.Log(string.Format(PoisonousDestroyLog, selectedMinion.name));
         }
         else
         {
             selectedMinion.Health -= defenderAttack;
+            if (selectedMinion.Health > 0)
+            {
+                TriggerFrenzyEffect();
+            }
         }
 
-        if (selectedMinion.hasLifeDrain)
+        if (enemyMinion.HasStatus(Minion.MinionStatus.HasLifeDrain))
         {
-            Player.PlayerHealth.Heal(attackerAttack);
-            Debug.Log($"{selectedMinion.name} drains {attackerAttack} health to the player!");
+            Enemies[0].GetComponent<AiPlayer>().EnemyHealth.Heal(defenderAttack);
+            Debug.Log(string.Format(LifeDrainLog, enemyMinion.name, defenderAttack, "enemy"));
         }
-        selectedMinion.hasAttackedThisTurn = true;
-
-        DeselectMinion();
     }
+
+    private void CheckOverkillEffect(int attack, int health)
+    {
+        if (attack > health && selectedMinion.HasStatus(Minion.MinionStatus.HasOverkill))
+        {
+            selectedMinion.TriggerOverkillEffect();
+            Debug.Log($"{selectedMinion.name} triggered its Overkill effect!");
+        }
+
+    }
+
+    private void TriggerFrenzyEffect()
+    {
+        if (selectedMinion.HasStatus(Minion.MinionStatus.HasFrenzy))
+        {
+            selectedMinion.TriggerFrenzyAttack();
+            Debug.Log($"{selectedMinion.name} triggered its Frenzy effect!");
+        }
+
+    }
+
 
     public void DeselectMinion()
     {
         if (selectedMinion != null)
         {
             Material newMaterial = new Material(selectedMinion.minionImage.material);
+            selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
             newMaterial.color = Color.white;
             selectedMinion.minionImage.material = newMaterial;
             selectedMinion = null;
@@ -190,9 +309,12 @@ public class GameManager : MonoBehaviour
         foreach (GameObject minionObj in Minions)
         {
             Minion minion = minionObj.GetComponent<Minion>();
-            minion.hasAttackedThisTurn = false;
-            minion.justSummoned = false;
-            minion.canAttackHero = true;
+            minion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, false);
+            minion.SetStatus(Minion.MinionStatus.JustSummoned, false);
+            minion.canAttackImage.color = new Color(97, 255, 105);
+
+            minion.SetStatus(Minion.MinionStatus.CanAttackHero, true);
+            minion.SetStatus(Minion.MinionStatus.IsStunned, false);
         }
     }
 
@@ -202,14 +324,14 @@ public class GameManager : MonoBehaviour
         foreach (GameObject enemyMinionObj in EnemyMinions)
         {
             Minion enemyMinion = enemyMinionObj.GetComponent<Minion>();
-            if (enemyMinion != null && enemyMinion.HasTaunt)
+            if (enemyMinion != null && enemyMinion.HasStatus(Minion.MinionStatus.HasTaunt))
             {
                 hasTauntMinions = true;
                 break;
             }
         }
 
-        if (hasTauntMinions && !target.HasTaunt)
+        if (hasTauntMinions && !target.HasStatus(Minion.MinionStatus.HasTaunt))
         {
             return false;
         }
@@ -219,11 +341,11 @@ public class GameManager : MonoBehaviour
 
     private bool CanAttackHero()
     {
-        if (!selectedMinion.canAttackHero) { return false; }
+        if (!selectedMinion.HasStatus(Minion.MinionStatus.CanAttackHero)) { return false; }
         foreach (GameObject enemyMinionObj in EnemyMinions)
         {
             Minion enemyMinion = enemyMinionObj.GetComponent<Minion>();
-            if (enemyMinion != null && enemyMinion.HasTaunt)
+            if (enemyMinion != null && enemyMinion.HasStatus(Minion.MinionStatus.HasTaunt))
             {
                 return false;
             }
@@ -250,7 +372,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (selectedMinion.HasRush && selectedMinion.justSummoned)
+        if (selectedMinion.HasStatus(Minion.MinionStatus.HasRush) && selectedMinion.HasStatus(Minion.MinionStatus.JustSummoned))
         {
             Debug.LogWarning("Rush minions cannot attack the enemy hero on the turn they are summoned!");
             return;
@@ -266,7 +388,22 @@ public class GameManager : MonoBehaviour
 
         int attackerAttack = selectedMinion.Attack;
         enemyHero.EnemyHealth.TakeDamage(attackerAttack);
-        selectedMinion.hasAttackedThisTurn = true;
+        selectedMinion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, true);
+        selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
+
+        if (enemyHero.EnemyHealth.CurrentHealth <= 0)
+        {
+            Debug.Log("Enemy died, loading next boss/bucket etc!");
+            if (RoundCount < MaxRounds)
+            {
+                RoundCount++;
+                SceneLoader.Instance.LoadScene("BucketScene");
+            }
+            else
+            {
+                SceneLoader.Instance.LoadScene("WinScreen");
+            }
+        }
 
         DeselectMinion();
         CheckForGameOver();

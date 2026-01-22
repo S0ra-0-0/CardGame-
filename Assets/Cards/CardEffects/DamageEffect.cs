@@ -12,9 +12,9 @@ public class DamageEffect : CardEffect
         }
         else if (target.TryGetComponent<Minion>(out Minion minion))
         {
-            if (minion.hasDivineShield)
+            if (minion.HasStatus(Minion.MinionStatus.HasDivineShield))
             {
-                minion.hasDivineShield = false;
+                minion.SetStatus(Minion.MinionStatus.HasDivineShield, false);
                 Debug.Log($"{minion.name}'s Divine Shield absorbed the damage!");
                 return;
             }

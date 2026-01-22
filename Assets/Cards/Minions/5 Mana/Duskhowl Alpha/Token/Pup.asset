@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
   m_Name: Pup
   m_EditorClassIdentifier: 
-  CardName: Bloodthorn Assassin
+  CardName: Wolf pup
   ManaCost: 5
-  CardImage: {fileID: 21300000, guid: 07dbfadf424987945bfc8873d2e1edf2, type: 3}
-  Description: 'Frenzy: Summon two 2/1 Wolf Pups'
+  CardImage: {fileID: 21300000, guid: dad29868a586d4e4ea203301c87f7c1b, type: 3}
+  Description: 
   cardType: 0
-  Attack: 5
-  Health: 3
+  Attack: 2
+  Health: 1
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: 6a4529f5ab2611b449a8b830b8af16d4, type: 2}
+  - {fileID: 11400000, guid: 7e0bacd80f8919c4eaf45ac9bb909ab3, type: 2}
   targetType: 0

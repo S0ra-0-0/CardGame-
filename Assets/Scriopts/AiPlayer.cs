@@ -21,13 +21,6 @@ public class AiPlayer : MonoBehaviour
 
     public void StartTurn()
     {
-        if (IsStunned)
-        {
-            IsStunned = false;
-            Debug.Log($"{gameObject.name} is stunned and skips their turn!");
-            GameManager.Instance.EndTurn();
-            return;
-        }
 
         EnemyMana.StartTurn();
         EnemyHand.AddCard(EnemyDeck.Draw());
@@ -55,13 +48,13 @@ public class AiPlayer : MonoBehaviour
                 break;
             }
         }
-        StartCoroutine(endTurn());
+        StartCoroutine(endTurn());//wait so it doesn't mess with targeting and to later implement animations or effects
     }
 
     public IEnumerator endTurn()
     {
         yield return new WaitForSeconds(turnTime);
-        GameManager.Instance.EndTurn();
+        GameManager.Instance.EndTurnAi();
     }
 
     public void OnClick()

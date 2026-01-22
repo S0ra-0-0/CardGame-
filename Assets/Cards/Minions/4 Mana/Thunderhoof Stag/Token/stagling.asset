@@ -15,7 +15,7 @@ MonoBehaviour:
   CardName: Stagling
   ManaCost: 2
   CardImage: {fileID: 21300000, guid: fe963fd91577d7f47b5556d36ce3f009, type: 3}
-  Description: 
+  Description: Rush
   cardType: 0
   Attack: 2
   Health: 2

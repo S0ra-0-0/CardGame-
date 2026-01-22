@@ -15,7 +15,7 @@ MonoBehaviour:
   CardName: Thunderhoof Stag
   ManaCost: 4
   CardImage: {fileID: 21300000, guid: c5139e57098a1e347b4363acfeb1c167, type: 3}
-  Description: 'Overkill: Summon a 2/2 Stagling'
+  Description: 'Overkill: Summon a 2/2 Stagling with rush'
   cardType: 0
   Attack: 4
   Health: 4

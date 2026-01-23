@@ -29,4 +29,9 @@ public class Deck : ScriptableObject
         Cards.Add(drawnCard); // Optional: place drawn card at the bottom of the deck
         return drawnCard;
     }
+
+    public void AddCard(CardScriptable card)
+    {
+        Cards.Add(card);
+    }
 }

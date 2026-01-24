@@ -13,6 +13,8 @@ public class SceneLoader : MonoBehaviour
             return;
         }
         Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string sceneName)

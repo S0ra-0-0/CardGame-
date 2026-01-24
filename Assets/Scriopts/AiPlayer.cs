@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AiPlayer : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class AiPlayer : MonoBehaviour
     public Mana EnemyMana;
     public Health EnemyHealth;
     public bool IsStunned = false;
+    [SerializeField] private Button enemyHeroButton;
     [SerializeField] private float turnTime = 2f;
     private void Start()
     {
+        SetHeroButtonUse();
         EnemyHealth = GetComponent<Health>();
         EnemyDeck.Shuffle();
         for (int i = 0; i < 3; i++)
@@ -63,5 +66,12 @@ public class AiPlayer : MonoBehaviour
         {
             GameManager.Instance.AttackEnemyHero(this);
         }
+    }
+
+    public void SetHeroButtonUse()
+    {
+
+        enemyHeroButton.onClick.AddListener(OnClick);
+
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   CardName: Shade
   ManaCost: 1
   CardImage: {fileID: 21300000, guid: 48d5eaec31aca9e4a980aa96a80d9a47, type: 3}
-  Description: Shady
+  Description: 
   cardType: 0
   Attack: 1
   Health: 1

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -13,10 +16,13 @@ public class GameManager : MonoBehaviour
     public Board board;
     public bool IsPlayerTurn = true;
 
+    [SerializeField] private GameObject enemyLocation;
+
+    [SerializeField] private GameObject[] enemyPrefabs;  // Drag enemy prefabs here in the Inspector
+    private int currentEnemyIndex = 0;
 
     [SerializeField] private TextMeshProUGUI PlayerTurn;
     [SerializeField] private TextMeshProUGUI EnemyTurn;
-
 
     [ConditionalHide("IsPlayerTurn")]
     [SerializeField] private Minion selectedMinion = null;
@@ -36,22 +42,86 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int RoundCount = 1;
     [SerializeField] private int MaxRounds = 8;
 
-
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
 
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+
+
     }
+
+    private void FindReferences()
+    {
+        enemyLocation = GameObject.Find("EnemyLocation");
+        Player = FindAnyObjectByType<Player>();
+        PlayerTurn = GameObject.Find("PlayerTurnText").GetComponent<TextMeshProUGUI>();
+        PlayerTurn.gameObject.SetActive(false);
+        EnemyTurn = GameObject.Find("EnemyTurnText").GetComponent<TextMeshProUGUI>();
+        EnemyTurn.gameObject.SetActive(false);
+        board = FindAnyObjectByType<Board>();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Main")
+        {
+
+            Enemies.Clear();
+            Minions.Clear();
+            EnemyMinions.Clear();
+            FindReferences();
+            if (currentEnemyIndex < enemyPrefabs.Length && enemyPrefabs[currentEnemyIndex] != null)
+            {
+                if (enemyLocation == null)
+                {
+                    Debug.LogError("Enemy location is not assigned in the GameManager!");
+                    return;
+                }
+                GameObject enemy = Instantiate(enemyPrefabs[currentEnemyIndex], enemyLocation.transform);
+                enemy.SetActive(true);
+                Enemies.Add(enemy);
+            }
+            else if (currentEnemyIndex >= enemyPrefabs.Length)
+            {
+                SceneManager.LoadScene("WinScreen");
+            }
+        }
+    }
+
 
     private void Start()
     {
-        Player.StartTurn();
+        if (Enemies.Count == 0 && currentEnemyIndex < enemyPrefabs.Length)
+        {
+            if (enemyPrefabs[currentEnemyIndex] != null && enemyLocation != null)
+            {
+                GameObject enemy = Instantiate(enemyPrefabs[currentEnemyIndex], enemyLocation.transform);
+                enemy.SetActive(true);
+                Enemies.Add(enemy);
+            }
+        }
+
+        if (IsPlayerTurn)
+        {
+            Player.StartTurn();
+        }
     }
 
     public void EndTurnPlayer()
@@ -69,7 +139,7 @@ public class GameManager : MonoBehaviour
         CheckForGameOver();
     }
 
-    public IEnumerator playerTurnText()
+    public IEnumerator PlayerTurnText()
     {
         PlayerTurn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
@@ -88,7 +158,7 @@ public class GameManager : MonoBehaviour
     {
         if (!IsPlayerTurn)
         {
-            StartCoroutine(playerTurnText());
+            StartCoroutine(PlayerTurnText());
             IsPlayerTurn = true;
             Player.StartTurn();
         }
@@ -395,16 +465,9 @@ public class GameManager : MonoBehaviour
 
         if (enemyHero.EnemyHealth.CurrentHealth <= 0)
         {
-            Debug.Log("Enemy died, loading next boss/bucket etc!");
-            if (RoundCount < MaxRounds)
-            {
-                RoundCount++;
-                SceneLoader.Instance.LoadScene("BucketScene");
-            }
-            else
-            {
-                SceneLoader.Instance.LoadScene("WinScreen");
-            }
+            Debug.Log("Enemy defeated! Moving to next battle...");
+            currentEnemyIndex++;
+            SceneManager.LoadScene("BucketScene");
         }
 
         DeselectMinion();

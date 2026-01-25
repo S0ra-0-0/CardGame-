@@ -2037,7 +2037,7 @@ MonoBehaviour:
   FrenzyEffects: []
   OverkillEffects: []
   shouldTriggerBattlecry: 1
-  targetType: 4
+  targetType: 0
   hitTarget: {fileID: 0}
   attack: 3
   health: 7

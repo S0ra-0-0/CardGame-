@@ -66,8 +66,9 @@ public class Minion : MonoBehaviour
         health = CardScriptable.Health;
         minionImage.sprite = CardScriptable.CardImage;
         name = CardScriptable.CardName;
-
-
+        
+        // Set JustSummoned to true initially - Rush/Charge will remove this if they have it
+        SetStatus(MinionStatus.JustSummoned, true);
 
         maxAttack = attack;
         maxHealth = health;

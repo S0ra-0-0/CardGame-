@@ -295,14 +295,15 @@ public class GameManager : MonoBehaviour
         }
         else if (selectedMinion.HasStatus(Minion.MinionStatus.HasPoisonous))
         {
-            enemyMinion.Health = 0;
             CheckOverkillEffect(attackerAttack, enemyMinion.Health);
+            enemyMinion.Health = 0;
             Debug.Log(string.Format(PoisonousDestroyLog, enemyMinion.name));
         }
         else
         {
-            CheckOverkillEffect(attackerAttack, enemyMinion.Health);
+            int defenderHealthBeforeDamage = enemyMinion.Health;
             enemyMinion.Health -= attackerAttack;
+            CheckOverkillEffect(attackerAttack, defenderHealthBeforeDamage);
         }
 
         if (selectedMinion.HasStatus(Minion.MinionStatus.HasLifeDrain))
@@ -327,8 +328,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            int attackerHealthBeforeDamage = selectedMinion.Health;
             selectedMinion.Health -= defenderAttack;
-            if (selectedMinion.Health > 0)
+            // Check if attacker survived damage and trigger Frenzy
+            if (selectedMinion.Health > 0 && attackerHealthBeforeDamage > defenderAttack)
             {
                 TriggerFrenzyEffect();
             }
@@ -341,9 +344,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckOverkillEffect(int attack, int health)
+    private void CheckOverkillEffect(int attack, int defenderHealthBeforeDamage)
     {
-        if (attack > health && selectedMinion.HasStatus(Minion.MinionStatus.HasOverkill))
+        if (attack > defenderHealthBeforeDamage && selectedMinion.HasStatus(Minion.MinionStatus.HasOverkill))
         {
             selectedMinion.TriggerOverkillEffect();
             Debug.Log($"{selectedMinion.name} triggered its Overkill effect!");

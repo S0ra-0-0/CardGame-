@@ -28,6 +28,9 @@ public class AiPlayer : MonoBehaviour
 
         EnemyMana.StartTurn();
         EnemyHand.AddCard(EnemyDeck.Draw());
+        
+        // Reset enemy minions for new turn
+        ResetEnemyMinionsForNewTurn();
 
         foreach (CardScriptable card in EnemyHand.CardsInHand)
         {
@@ -57,6 +60,20 @@ public class AiPlayer : MonoBehaviour
         AttackWithMinions();
         
         StartCoroutine(endTurn());//wait so it doesn't mess with targeting and to later implement animations or effects
+    }
+    
+    private void ResetEnemyMinionsForNewTurn()
+    {
+        foreach (GameObject minionObj in GameManager.Instance.EnemyMinions)
+        {
+            Minion minion = minionObj.GetComponent<Minion>();
+            if (minion != null)
+            {
+                minion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, false);
+                minion.SetStatus(Minion.MinionStatus.JustSummoned, false);
+                minion.SetStatus(Minion.MinionStatus.IsStunned, false);
+            }
+        }
     }
 
     public void AttackWithMinions()
@@ -181,8 +198,9 @@ public class AiPlayer : MonoBehaviour
     
     private bool CanAttackHero(Minion minion)
     {
-        // Check if minion can attack hero
-        if (!minion.HasStatus(Minion.MinionStatus.CanAttackHero))
+        // Check if minion can attack hero (not just summoned without Rush/Charge)
+        if (minion.HasStatus(Minion.MinionStatus.JustSummoned) && 
+            !minion.HasStatus(Minion.MinionStatus.HasRush))
             return false;
             
         // Check if there are any Taunt minions on player's side
@@ -226,12 +244,15 @@ public class AiPlayer : MonoBehaviour
         }
         else if (attacker.HasStatus(Minion.MinionStatus.HasPoisonous))
         {
+            CheckOverkillEffect(attackerAttack, defender.Health, attacker);
             defender.Health = 0;
             Debug.Log($"{defender.name} was destroyed by Poisonous!");
         }
         else
         {
+            int defenderHealthBeforeDamage = defender.Health;
             defender.Health -= attackerAttack;
+            CheckOverkillEffect(attackerAttack, defenderHealthBeforeDamage, attacker);
             Debug.Log($"{defender.name} takes {attackerAttack} damage!");
         }
         
@@ -248,7 +269,13 @@ public class AiPlayer : MonoBehaviour
         }
         else
         {
+            int attackerHealthBeforeDamage = attacker.Health;
             attacker.Health -= defenderAttack;
+            // Check if attacker survived damage and trigger Frenzy
+            if (attacker.Health > 0 && attackerHealthBeforeDamage > defenderAttack)
+            {
+                TriggerFrenzyEffect(attacker);
+            }
             Debug.Log($"{attacker.name} takes {defenderAttack} damage!");
         }
         
@@ -304,6 +331,24 @@ public class AiPlayer : MonoBehaviour
         
         // Mark attacker as having attacked
         attacker.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, true);
+    }
+
+    private void CheckOverkillEffect(int attack, int defenderHealthBeforeDamage, Minion attacker)
+    {
+        if (attack > defenderHealthBeforeDamage && attacker.HasStatus(Minion.MinionStatus.HasOverkill))
+        {
+            attacker.TriggerOverkillEffect();
+            Debug.Log($"{attacker.name} triggered its Overkill effect!");
+        }
+    }
+    
+    private void TriggerFrenzyEffect(Minion attacker)
+    {
+        if (attacker.HasStatus(Minion.MinionStatus.HasFrenzy))
+        {
+            attacker.TriggerFrenzyAttack();
+            Debug.Log($"{attacker.name} triggered its Frenzy effect!");
+        }
     }
 
     public IEnumerator endTurn()

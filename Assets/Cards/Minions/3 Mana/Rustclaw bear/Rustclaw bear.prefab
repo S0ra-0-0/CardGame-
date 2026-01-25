@@ -2182,9 +2182,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c0e03f1767803f47b2cd78f7fc9cc1f, type: 2}
   BattlecryEffects: []
   DeathtrattleEffects: []
-  FrenzyEffects:
-  - {fileID: 11400000, guid: f02eacb5366b2a1408bcf48c6ca227be, type: 2}
-  - {fileID: 11400000, guid: 6fd40e93691f2024ea36760ebce029e3, type: 2}
+  FrenzyEffects: []
   OverkillEffects: []
   shouldTriggerBattlecry: 1
   targetType: 2

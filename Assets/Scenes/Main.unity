@@ -2245,7 +2245,6 @@ MonoBehaviour:
   enemyLocation: {fileID: 589882391}
   enemyPrefabs:
   - {fileID: 137977192121224508, guid: 118abbdf13e33f9439e363b715d84544, type: 3}
-  - {fileID: 137977192121224508, guid: 118abbdf13e33f9439e363b715d84544, type: 3}
   PlayerTurn: {fileID: 233627122}
   EnemyTurn: {fileID: 1975378535}
   selectedMinion: {fileID: 0}

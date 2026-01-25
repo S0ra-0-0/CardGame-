@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 007eb0ba3a2c56d45bed70fdd1d5f268, type: 3}
-  m_Name: BuffEffect
+  m_Script: {fileID: 11500000, guid: ca22cbb4e7607014d9c494f93c5898a2, type: 3}
+  m_Name: DrawEffect
   m_EditorClassIdentifier: 
-  Type: 6
-  Value: 2
+  Type: 0
+  Value: 0

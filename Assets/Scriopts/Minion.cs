@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -62,11 +63,24 @@ public class Minion : MonoBehaviour
 
     private void Awake()
     {
+        if (CardScriptable == null)
+        {
+            Debug.LogError("CardScriptable is not assigned on Minion!");
+            return;
+        }
+
         attack = CardScriptable.Attack;
         health = CardScriptable.Health;
-        minionImage.sprite = CardScriptable.CardImage;
+        if (minionImage != null)
+        {
+            minionImage.sprite = CardScriptable.CardImage;
+        }
+        else
+        {
+            Debug.LogError("minionImage is not assigned on Minion!");
+        }
         name = CardScriptable.CardName;
-        
+
         // Set JustSummoned to true initially - Rush/Charge will remove this if they have it
         SetStatus(MinionStatus.JustSummoned, true);
 
@@ -85,8 +99,14 @@ public class Minion : MonoBehaviour
     }
     private void Start()
     {
-        attackText.text = attack.ToString();
-        healthText.text = health.ToString();
+        if (attackText != null)
+        {
+            attackText.text = attack.ToString();
+        }
+        if (healthText != null)
+        {
+            healthText.text = health.ToString();
+        }
 
         foreach (KeyWords keyWord in keyWords)
         {
@@ -96,12 +116,18 @@ public class Minion : MonoBehaviour
 
         if (HasStatus(MinionStatus.JustSummoned))
         {
-            canAttackImage.color = new Color(0, 0, 0, 0);
+            if (canAttackImage != null)
+            {
+                canAttackImage.color = new Color(0, 0, 0, 0);
+            }
 
         }
         else
         {
-            canAttackImage.color = new Color(97, 255, 105);
+            if (canAttackImage != null)
+            {
+                canAttackImage.color = new Color32(97, 255, 105, 255);
+            }
         }
     }
 
@@ -214,9 +240,18 @@ public class Minion : MonoBehaviour
                     break;
                 case TargetType.RandomEnemy:
                     // Apply to a random enemy
-                    if (GameManager.Instance.Enemies.Count > 0)
+                    if (GameManager.Instance == null)
                     {
-                        GameObject randomEnemy = GameManager.Instance.EnemyMinions[UnityEngine.Random.Range(0, GameManager.Instance.Enemies.Count)];
+                        return;
+                    }
+
+                    List<GameObject> potentialTargets = GameManager.Instance.IsPlayerTurn
+                        ? GameManager.Instance.EnemyMinions
+                        : GameManager.Instance.Minions;
+
+                    if (potentialTargets.Count > 0)
+                    {
+                        GameObject randomEnemy = potentialTargets[UnityEngine.Random.Range(0, potentialTargets.Count)];
                         effect.ApplyEffect(randomEnemy, effect.Value);
                     }
                     break;

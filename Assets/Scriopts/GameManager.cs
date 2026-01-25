@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -20,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] enemyPrefabs;  // Drag enemy prefabs here in the Inspector
     private int currentEnemyIndex = 0;
-
 
     [SerializeField] private TextMeshProUGUI PlayerTurn;
     [SerializeField] private TextMeshProUGUI EnemyTurn;
@@ -59,10 +57,27 @@ public class GameManager : MonoBehaviour
     {
         enemyLocation = GameObject.Find("EnemyLocation");
         Player = FindAnyObjectByType<Player>();
-        PlayerTurn = GameObject.Find("PlayerTurnText").GetComponent<TextMeshProUGUI>();
-        PlayerTurn.gameObject.SetActive(false);
-        EnemyTurn = GameObject.Find("EnemyTurnText").GetComponent<TextMeshProUGUI>();
-        EnemyTurn.gameObject.SetActive(false);
+
+        GameObject playerTurnObj = GameObject.Find("PlayerTurnText");
+        if (playerTurnObj != null)
+        {
+            PlayerTurn = playerTurnObj.GetComponent<TextMeshProUGUI>();
+            if (PlayerTurn != null)
+            {
+                PlayerTurn.gameObject.SetActive(false);
+            }
+        }
+
+        GameObject enemyTurnObj = GameObject.Find("EnemyTurnText");
+        if (enemyTurnObj != null)
+        {
+            EnemyTurn = enemyTurnObj.GetComponent<TextMeshProUGUI>();
+            if (EnemyTurn != null)
+            {
+                EnemyTurn.gameObject.SetActive(false);
+            }
+        }
+
         board = FindAnyObjectByType<Board>();
     }
 
@@ -76,7 +91,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Main")
@@ -86,6 +100,11 @@ public class GameManager : MonoBehaviour
             Minions.Clear();
             EnemyMinions.Clear();
             FindReferences();
+            if (enemyPrefabs == null || enemyPrefabs.Length == 0)
+            {
+                Debug.LogError("No enemy prefabs assigned in GameManager.");
+                return;
+            }
             if (currentEnemyIndex < enemyPrefabs.Length && enemyPrefabs[currentEnemyIndex] != null)
             {
                 if (enemyLocation == null)
@@ -103,20 +122,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
-        if (Enemies.Count == 0 && currentEnemyIndex < enemyPrefabs.Length)
-        {
-            if (enemyPrefabs[currentEnemyIndex] != null && enemyLocation != null)
-            {
-                GameObject enemy = Instantiate(enemyPrefabs[currentEnemyIndex], enemyLocation.transform);
-                enemy.SetActive(true);
-                Enemies.Add(enemy);
-            }
-        }
-
-        if (IsPlayerTurn)
+        if (IsPlayerTurn && Player != null)
         {
             Player.StartTurn();
         }
@@ -128,10 +136,18 @@ public class GameManager : MonoBehaviour
         {
             IsPlayerTurn = false;
             StartCoroutine(AiTurnText());
-            PlayerTurn.gameObject.SetActive(false);
+            if (PlayerTurn != null)
+            {
+                PlayerTurn.gameObject.SetActive(false);
+            }
             foreach (GameObject enemy in Enemies)
             {
-                enemy.GetComponent<AiPlayer>().StartTurn();
+                if (enemy == null) continue;
+                AiPlayer ai = enemy.GetComponent<AiPlayer>();
+                if (ai != null)
+                {
+                    ai.StartTurn();
+                }
             }
         }
         CheckForGameOver();
@@ -139,6 +155,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator PlayerTurnText()
     {
+        if (PlayerTurn == null)
+        {
+            yield break;
+        }
         PlayerTurn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         PlayerTurn.gameObject.SetActive(false);
@@ -146,11 +166,14 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator AiTurnText()
     {
+        if (EnemyTurn == null)
+        {
+            yield break;
+        }
         EnemyTurn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         EnemyTurn.gameObject.SetActive(false);
     }
-
 
     public void EndTurnAi()
     {
@@ -158,18 +181,22 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(PlayerTurnText());
             IsPlayerTurn = true;
-            Player.StartTurn();
+            if (Player != null)
+            {
+                Player.StartTurn();
+            }
         }
         CheckForGameOver();
     }
 
     public void CheckForGameOver()
     {
-        if (Player.PlayerHealth.CurrentHealth <= 0)
+        if (Player != null && Player.PlayerHealth != null && Player.PlayerHealth.CurrentHealth <= 0)
         {
             Debug.Log("Game Over! Player lost.");
-            SceneLoader.Instance.LoadScene("GameOverScene");
+            SceneLoader.Instance.LoadScene("GameOver");
         }
+
         else if (Enemies.Count <= 0)
         {
             SceneLoader.Instance.LoadScene("WinScreen");
@@ -183,14 +210,21 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject minionObj in Minions)
         {
+            if (minionObj == null) continue;
             Minion m = minionObj.GetComponent<Minion>();
+            if (m == null) continue;
+
             if (m != minion)
             {
-                Material newMaterial = new Material(m.minionImage.material);
-                newMaterial.color = Color.white;
-                m.minionImage.material = newMaterial;
+                if (m.minionImage != null)
+                {
+                    Material newMaterial = new Material(m.minionImage.material);
+                    newMaterial.color = Color.white;
+                    m.minionImage.material = newMaterial;
+                }
             }
         }
+
         if (minion.HasStatus(Minion.MinionStatus.HasAttackedThisTurn))
         {
             Debug.LogWarning("This minion has already attacked this turn!");
@@ -209,9 +243,12 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Material selectedMaterial = new Material(minion.minionImage.material);
-        selectedMaterial.color = Color.cyan;
-        minion.minionImage.material = selectedMaterial;
+        if (minion.minionImage != null)
+        {
+            Material selectedMaterial = new Material(minion.minionImage.material);
+            selectedMaterial.color = Color.cyan;
+            minion.minionImage.material = selectedMaterial;
+        }
         selectedMinion = minion;
     }
 
@@ -308,8 +345,11 @@ public class GameManager : MonoBehaviour
 
         if (selectedMinion.HasStatus(Minion.MinionStatus.HasLifeDrain))
         {
-            Player.PlayerHealth.Heal(attackerAttack);
-            Debug.Log(string.Format(LifeDrainLog, selectedMinion.name, attackerAttack, "player"));
+            if (Player != null && Player.PlayerHealth != null)
+            {
+                Player.PlayerHealth.Heal(attackerAttack);
+                Debug.Log(string.Format(LifeDrainLog, selectedMinion.name, attackerAttack, "player"));
+            }
         }
 
     }
@@ -339,8 +379,15 @@ public class GameManager : MonoBehaviour
 
         if (enemyMinion.HasStatus(Minion.MinionStatus.HasLifeDrain))
         {
-            Enemies[0].GetComponent<AiPlayer>().EnemyHealth.Heal(defenderAttack);
-            Debug.Log(string.Format(LifeDrainLog, enemyMinion.name, defenderAttack, "enemy"));
+            if (Enemies.Count > 0 && Enemies[0] != null)
+            {
+                AiPlayer ai = Enemies[0].GetComponent<AiPlayer>();
+                if (ai != null && ai.EnemyHealth != null)
+                {
+                    ai.EnemyHealth.Heal(defenderAttack);
+                    Debug.Log(string.Format(LifeDrainLog, enemyMinion.name, defenderAttack, "enemy"));
+                }
+            }
         }
     }
 
@@ -364,15 +411,21 @@ public class GameManager : MonoBehaviour
 
     }
 
-
     public void DeselectMinion()
     {
         if (selectedMinion != null)
         {
-            Material newMaterial = new Material(selectedMinion.minionImage.material);
-            selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
-            newMaterial.color = Color.white;
-            selectedMinion.minionImage.material = newMaterial;
+            if (selectedMinion.canAttackImage != null)
+            {
+                selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
+            }
+
+            if (selectedMinion.minionImage != null)
+            {
+                Material newMaterial = new Material(selectedMinion.minionImage.material);
+                newMaterial.color = Color.white;
+                selectedMinion.minionImage.material = newMaterial;
+            }
             selectedMinion = null;
         }
     }
@@ -381,10 +434,15 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject minionObj in Minions)
         {
+            if (minionObj == null) continue;
             Minion minion = minionObj.GetComponent<Minion>();
+            if (minion == null) continue;
             minion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, false);
             minion.SetStatus(Minion.MinionStatus.JustSummoned, false);
-            minion.canAttackImage.color = new Color(97, 255, 105);
+            if (minion.canAttackImage != null)
+            {
+                minion.canAttackImage.color = new Color32(97, 255, 105, 255);
+            }
 
             minion.SetStatus(Minion.MinionStatus.CanAttackHero, true);
             minion.SetStatus(Minion.MinionStatus.IsStunned, false);
@@ -460,11 +518,17 @@ public class GameManager : MonoBehaviour
         Debug.Log($"{selectedMinion.name} attacks {enemyHero.name}!");
 
         int attackerAttack = selectedMinion.Attack;
-        enemyHero.EnemyHealth.TakeDamage(attackerAttack);
+        if (enemyHero != null && enemyHero.EnemyHealth != null)
+        {
+            enemyHero.EnemyHealth.TakeDamage(attackerAttack);
+        }
         selectedMinion.SetStatus(Minion.MinionStatus.HasAttackedThisTurn, true);
-        selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
+        if (selectedMinion.canAttackImage != null)
+        {
+            selectedMinion.canAttackImage.color = new Color(0, 0, 0, 0);
+        }
 
-        if (enemyHero.EnemyHealth.CurrentHealth <= 0)
+        if (enemyHero != null && enemyHero.EnemyHealth != null && enemyHero.EnemyHealth.CurrentHealth <= 0)
         {
             Debug.Log("Enemy defeated! Moving to next battle...");
             currentEnemyIndex++;

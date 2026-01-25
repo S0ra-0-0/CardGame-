@@ -16,6 +16,23 @@ public class AiPlayer : MonoBehaviour
     {
         SetHeroButtonUse();
         EnemyHealth = GetComponent<Health>();
+
+        if (EnemyDeck == null)
+        {
+            Debug.LogError("EnemyDeck not assigned in AiPlayer component!");
+            return;
+        }
+        if (EnemyHand == null)
+        {
+            Debug.LogError("EnemyHand not assigned in AiPlayer component!");
+            return;
+        }
+        if (EnemyMana == null)
+        {
+            Debug.LogError("EnemyMana not assigned in AiPlayer component!");
+            return;
+        }
+
         EnemyDeck.Shuffle();
         for (int i = 0; i < 3; i++)
         {
@@ -25,6 +42,11 @@ public class AiPlayer : MonoBehaviour
 
     public void StartTurn()
     {
+        if (EnemyMana == null || EnemyHand == null || EnemyDeck == null)
+        {
+            Debug.LogError("AiPlayer is missing EnemyMana/EnemyHand/EnemyDeck.");
+            return;
+        }
 
         EnemyMana.StartTurn();
         EnemyHand.AddCard(EnemyDeck.Draw());
@@ -32,8 +54,10 @@ public class AiPlayer : MonoBehaviour
         // Reset enemy minions for new turn
         ResetEnemyMinionsForNewTurn();
 
-        foreach (CardScriptable card in EnemyHand.CardsInHand)
+        List<CardScriptable> handSnapshot = new List<CardScriptable>(EnemyHand.CardsInHand);
+        foreach (CardScriptable card in handSnapshot)
         {
+            if (card == null) continue;
             if (EnemyMana.SpendMana(card.ManaCost))
             {
                 GameObject target = gameObject;
@@ -366,6 +390,10 @@ public class AiPlayer : MonoBehaviour
 
     public void SetHeroButtonUse()
     {
+        if (enemyHeroButton == null)
+        {
+            return;
+        }
 
         enemyHeroButton.onClick.AddListener(OnClick);
 

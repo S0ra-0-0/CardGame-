@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefabs;  // Drag enemy prefabs here in the Inspector
     private int currentEnemyIndex = 0;
 
+
     [SerializeField] private TextMeshProUGUI PlayerTurn;
     [SerializeField] private TextMeshProUGUI EnemyTurn;
 
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     private const string PoisonousDestroyLog = "{0} was destroyed by Poisonous!";
     private const string LifeDrainLog = "{0} drains {1} health to the {2}!";
 
-    [SerializeField] private int RoundCount = 1;
+    public int RoundCount = 1;
     [SerializeField] private int MaxRounds = 8;
 
     private void Awake()
@@ -52,8 +53,6 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-
     }
 
     private void FindReferences()
@@ -95,7 +94,6 @@ public class GameManager : MonoBehaviour
                     return;
                 }
                 GameObject enemy = Instantiate(enemyPrefabs[currentEnemyIndex], enemyLocation.transform);
-                enemy.SetActive(true);
                 Enemies.Add(enemy);
             }
             else if (currentEnemyIndex >= enemyPrefabs.Length)

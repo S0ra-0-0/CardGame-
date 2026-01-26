@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c028d3654f4bcd148919af1bdcace623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeck: {fileID: 11400000, guid: 7e001ad10164e0d4ea71940556acff4e, type: 2}
+  PlayerDeck: {fileID: 11400000, guid: e69c15798782d144d9dd86612f4e1ae9, type: 2}
   PlayerHand: {fileID: 497062018}
   PlayerMana: {fileID: 497062017}
   PlayerHealth: {fileID: 497062019}

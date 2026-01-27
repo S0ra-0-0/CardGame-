@@ -62,9 +62,9 @@ public class CardScriptable : ScriptableObject
                     break;
                 case TargetType.RandomEnemy:
                     // Apply to a random enemy
-                    if (GameManager.Instance.Enemies.Count > 0)
+                    if (GameManager.Instance.EnemyMinions.Count > 0)
                     {
-                        GameObject randomEnemy = GameManager.Instance.Enemies[Random.Range(0, GameManager.Instance.Enemies.Count)];
+                        GameObject randomEnemy = GameManager.Instance.EnemyMinions[Random.Range(0, GameManager.Instance.EnemyMinions.Count)];
                         effect.ApplyEffect(randomEnemy, effect.Value);
                     }
                     break;

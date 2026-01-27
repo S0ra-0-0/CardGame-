@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
   m_Name: ManaBurst
   m_EditorClassIdentifier: 
-  CardName: 
-  ManaCost: 0
+  CardName: ManaBurst
+  ManaCost: 1
   CardImage: {fileID: 0}
-  Description: 
-  cardType: 0
+  Description: Deal 3 damage to a random enemy minion
+  cardType: 1
   Attack: 0
   Health: 0
   Durability: 0
   WeaponAttack: 0
-  Effects: []
-  targetType: 0
+  Effects:
+  - {fileID: 11400000, guid: fe01326bdb38d91438081a0d8c957ceb, type: 2}
+  targetType: 4

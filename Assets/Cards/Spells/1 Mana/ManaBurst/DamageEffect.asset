@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
   Type: 0
-  Value: 0
+  Value: 3

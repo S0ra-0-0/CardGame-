@@ -63,6 +63,11 @@ public class CardUI : MonoBehaviour
                 if (healthText != null)
                     healthText.text = Card.Health.ToString();
             }
+            else
+            {
+                if (minionStatsPanel != null)
+                    minionStatsPanel.SetActive(false);
+            }
 
 
         }

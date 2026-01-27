@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
-  m_Name: ManaBurst
+  m_Name: Arcane Intelect
   m_EditorClassIdentifier: 
-  CardName: ManaBurst
-  ManaCost: 1
-  CardImage: {fileID: 21300000, guid: 8faf92d52727ad046be3babc6c0b70a9, type: 3}
-  Description: Deal 3 damage to a random enemy minion
+  CardName: Arcane Intelect
+  ManaCost: 2
+  CardImage: {fileID: 21300000, guid: fc845c2216ff52949b07e5e95ee06094, type: 3}
+  Description: Draw 2 cards
   cardType: 1
   Attack: 0
   Health: 0
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: fe01326bdb38d91438081a0d8c957ceb, type: 2}
-  targetType: 4
+  - {fileID: 11400000, guid: c414e9cd0c3bed242b35468bff274728, type: 2}
+  targetType: 0

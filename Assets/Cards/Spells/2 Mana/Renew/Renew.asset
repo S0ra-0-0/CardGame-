@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
-  m_Name: ManaBurst
+  m_Name: Renew
   m_EditorClassIdentifier: 
-  CardName: ManaBurst
-  ManaCost: 1
-  CardImage: {fileID: 21300000, guid: 8faf92d52727ad046be3babc6c0b70a9, type: 3}
-  Description: Deal 3 damage to a random enemy minion
+  CardName: Renew
+  ManaCost: 2
+  CardImage: {fileID: 21300000, guid: 9b8f5a5d0433db94c8c17337e906c1be, type: 3}
+  Description: Restore 3 health to your hero and draw a card
   cardType: 1
   Attack: 0
   Health: 0
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: fe01326bdb38d91438081a0d8c957ceb, type: 2}
-  targetType: 4
+  - {fileID: 11400000, guid: 3418ea031617098438cb3c05eb2bf021, type: 2}
+  - {fileID: 11400000, guid: cde29c0f73fc6b648895b823bb5ff8d2, type: 2}
+  targetType: 0

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
-  m_Name: ManaBurst
+  m_Name: Vaporize
   m_EditorClassIdentifier: 
-  CardName: ManaBurst
-  ManaCost: 1
-  CardImage: {fileID: 21300000, guid: 8faf92d52727ad046be3babc6c0b70a9, type: 3}
-  Description: Deal 3 damage to a random enemy minion
+  CardName: Vaporize
+  ManaCost: 5
+  CardImage: {fileID: 21300000, guid: 5c6b40100952a924195ee19254db7e1b, type: 3}
+  Description: Deal 3 damage to all enemy minions
   cardType: 1
   Attack: 0
   Health: 0
   Durability: 0
   WeaponAttack: 0
   Effects:
-  - {fileID: 11400000, guid: fe01326bdb38d91438081a0d8c957ceb, type: 2}
-  targetType: 4
+  - {fileID: 11400000, guid: 68acc60dd91ee1544940ec9bdf5ddaf8, type: 2}
+  targetType: 2

@@ -1450,6 +1450,7 @@ GameObject:
   - component: {fileID: 527046422}
   - component: {fileID: 527046421}
   - component: {fileID: 527046424}
+  - component: {fileID: 527046425}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -1520,19 +1521,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 527046422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1327052044}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EndTurnPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &527046422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,6 +1582,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &527046425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527046419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015c3b2607480114aa56a4608d9308fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endTurnButton: {fileID: 527046421}
 --- !u!1 &589882391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,6 +3474,7 @@ MonoBehaviour:
   enemyLocation: {fileID: 589882391}
   enemyPrefabs:
   - {fileID: 137977192121224508, guid: 118abbdf13e33f9439e363b715d84544, type: 3}
+  - {fileID: 137977192121224508, guid: 941c5c7517e5aba4baea5e87e95d621f, type: 3}
   PlayerTurn: {fileID: 233627122}
   EnemyTurn: {fileID: 1975378535}
   selectedMinion: {fileID: 0}

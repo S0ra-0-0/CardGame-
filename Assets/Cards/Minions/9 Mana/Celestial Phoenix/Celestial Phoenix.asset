@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75855ca6131c7dd47a9d03ba5586d141, type: 3}
   m_Name: Celestial Phoenix
   m_EditorClassIdentifier: 
-  CardName: Tideborn Kraken
+  CardName: Celestial Phoenix
   ManaCost: 9
   CardImage: {fileID: 21300000, guid: 6e7eddac5f25ad3409e72f0d4ab30cd2, type: 3}
-  Description: 'Rush, Deathrattle: Summon a 7/7 Phoenix with rush'
+  Description: 'Rush, Battlecry: Summon a 5/5 with rush'
   cardType: 0
-  Attack: 7
-  Health: 7
+  Attack: 5
+  Health: 5
   Durability: 0
   WeaponAttack: 0
   Effects:

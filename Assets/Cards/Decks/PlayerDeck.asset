@@ -13,5 +13,30 @@ MonoBehaviour:
   m_Name: PlayerDeck
   m_EditorClassIdentifier: 
   Cards:
+  - {fileID: 11400000, guid: 3afac52507e31344bba1abd723bc8281, type: 2}
+  - {fileID: 11400000, guid: 3b067f4efa0a33844b2985e201fc6b4d, type: 2}
+  - {fileID: 11400000, guid: 52414f408d439d14a82196697ea088b7, type: 2}
+  - {fileID: 11400000, guid: 66bf0008605a6bb46ad1ba75b23e3dcd, type: 2}
+  - {fileID: 11400000, guid: fab0ca6f21e947b4e8801215d555c15a, type: 2}
+  - {fileID: 11400000, guid: 1f66a1e255ebb7149b4a19ee1ddfafe1, type: 2}
+  - {fileID: 11400000, guid: 2cfa9710baf168a4d9671ef2f81b0781, type: 2}
+  - {fileID: 11400000, guid: 86b3d5a96749c044c80a45c861f260e8, type: 2}
+  - {fileID: 11400000, guid: 103a1f7369fe5b04091106ff9ce54303, type: 2}
+  - {fileID: 11400000, guid: 59fd8ee64d192b54e9a53bc39319be4e, type: 2}
+  - {fileID: 11400000, guid: acf73c40b92ee194c970a095b55250d2, type: 2}
+  - {fileID: 11400000, guid: afe1c0f4b0927bc4e967034106392037, type: 2}
+  - {fileID: 11400000, guid: 443ecabbd8810634a93064513ce59166, type: 2}
+  - {fileID: 11400000, guid: 14082f1dc1482964eacb0c44fde3ea70, type: 2}
+  - {fileID: 11400000, guid: 4b3e0d3689255f340bf4afdbadce4269, type: 2}
+  - {fileID: 11400000, guid: 940b01fbc37b894458c5f28919116cea, type: 2}
+  - {fileID: 11400000, guid: bffb6f88f7eac2f41a92aa120bb38af7, type: 2}
+  - {fileID: 11400000, guid: 60a2c001513491743bd40face39c01b1, type: 2}
+  - {fileID: 11400000, guid: 74b25d7e3e30afa46abba31b69265f34, type: 2}
+  - {fileID: 11400000, guid: 72a12b1e2cddb354f8973d6b37fb49d6, type: 2}
+  - {fileID: 11400000, guid: 2690520030883c64782a4e4117d775c2, type: 2}
+  - {fileID: 11400000, guid: e8b233998eb3e4a4885d4dd610939dff, type: 2}
   - {fileID: 11400000, guid: de1811479dc7d8f41ab9cbb7b5754909, type: 2}
+  - {fileID: 11400000, guid: 905fb7c53cfbe214b8ab8b8fdbb19c80, type: 2}
   - {fileID: 11400000, guid: eccc2390bea301a4d9cf6b97ae24bed1, type: 2}
+  - {fileID: 11400000, guid: 8e8b781075560ac4daa79c430e18333e, type: 2}
+  - {fileID: 11400000, guid: c66ebdafde0f1a94b9c48718e31dde5b, type: 2}

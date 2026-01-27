@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c028d3654f4bcd148919af1bdcace623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeck: {fileID: 11400000, guid: e69c15798782d144d9dd86612f4e1ae9, type: 2}
+  PlayerDeck: {fileID: 11400000, guid: 75719de46a77dd847b2452a0f9d3f024, type: 2}
   PlayerHand: {fileID: 497062018}
   PlayerMana: {fileID: 497062017}
   PlayerHealth: {fileID: 497062019}
@@ -3475,6 +3475,12 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 137977192121224508, guid: 118abbdf13e33f9439e363b715d84544, type: 3}
   - {fileID: 137977192121224508, guid: 941c5c7517e5aba4baea5e87e95d621f, type: 3}
+  - {fileID: 137977192121224508, guid: 8ab6215f2de10f8419c78ac6b8fe4c17, type: 3}
+  - {fileID: 137977192121224508, guid: 3b0d2a46b41b88a498f345fc908ff348, type: 3}
+  - {fileID: 137977192121224508, guid: 6dd04462c9eab4040bba27b241e27fb2, type: 3}
+  - {fileID: 137977192121224508, guid: 32e416ed65e271042bb138fe8e081b30, type: 3}
+  - {fileID: 137977192121224508, guid: 4945fb89c0e3730448ce643b02e79e18, type: 3}
+  - {fileID: 137977192121224508, guid: e9b35fc1aed94d248ba26f694031b0e7, type: 3}
   PlayerTurn: {fileID: 233627122}
   EnemyTurn: {fileID: 1975378535}
   selectedMinion: {fileID: 0}

@@ -2179,13 +2179,13 @@ MonoBehaviour:
   healthText: {fileID: 4249390871031242553}
   keyWords:
   - {fileID: 11400000, guid: 9415fba6b75ff3749a3e64969b776e66, type: 2}
-  - {fileID: 11400000, guid: 60d3957f332f07545839df0c970d958b, type: 2}
+  - {fileID: 11400000, guid: 14cd8e5a91842d9458ccffe9be463abb, type: 2}
   BattlecryEffects: []
   DeathtrattleEffects: []
   FrenzyEffects: []
   OverkillEffects: []
   shouldTriggerBattlecry: 1
-  targetType: 0
+  targetType: 5
   hitTarget: {fileID: 0}
   attack: 3
   health: 7

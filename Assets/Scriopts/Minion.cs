@@ -34,6 +34,7 @@ public class Minion : MonoBehaviour
     public MinionStatus status = MinionStatus.None;
     public Image minionImage;
     public Image canAttackImage;
+    private Image divineShieldImage;
 
     [SerializeField] private CardScriptable CardScriptable;
 
@@ -129,6 +130,10 @@ public class Minion : MonoBehaviour
                 canAttackImage.color = new Color32(97, 255, 105, 255);
             }
         }
+
+        // Create divine shield UI dynamically
+        CreateDivineShieldUI();
+        UpdateDivineShieldUI();
     }
 
     public bool HasStatus(MinionStatus flag)
@@ -145,6 +150,12 @@ public class Minion : MonoBehaviour
         else
         {
             status &= ~flag;
+        }
+
+        // Update divine shield UI when the status changes
+        if (flag == MinionStatus.HasDivineShield)
+        {
+            UpdateDivineShieldUI();
         }
     }
 
@@ -391,6 +402,40 @@ public class Minion : MonoBehaviour
         cardPanel.SetActive(false);
 
 
+    }
+
+    private void CreateDivineShieldUI()
+    {
+        // Find the ImageMask object
+        Transform imageMask = transform.Find("ImageMask");
+        if (imageMask == null)
+        {
+            Debug.LogWarning("ImageMask not found on minion " + name + ". Divine shield UI will be parented to minion directly.");
+            imageMask = transform;
+        }
+
+        GameObject divineShieldObj = new GameObject("DivineShield");
+        divineShieldObj.transform.SetParent(imageMask);
+        RectTransform rectTransform = divineShieldObj.AddComponent<RectTransform>();
+        rectTransform.anchorMin = Vector2.zero;
+        rectTransform.anchorMax = Vector2.one;
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
+        rectTransform.localPosition = Vector3.zero;
+
+        divineShieldImage = divineShieldObj.AddComponent<Image>();
+
+        divineShieldImage.color = new Color(1f, 0.84f, 0f, 0.4f);
+        divineShieldObj.SetActive(false);
+    }
+
+    private void UpdateDivineShieldUI()
+    {
+        if (divineShieldImage != null)
+        {
+            bool hasDivineShield = HasStatus(MinionStatus.HasDivineShield);
+            divineShieldImage.gameObject.SetActive(hasDivineShield);
+        }
     }
 
 
